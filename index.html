@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WLAN Ladeanimation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      height: 100vh;
+    }
+
+    .centered {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .loader {
+      animation: fadeOut 1s ease-out forwards;
+      animation-delay: 3s;
+    }
+
+    .wifi {
+      width: 60px;
+      height: 60px;
+      position: relative;
+    }
+
+    .wifi::before,
+    .wifi::after {
+      content: '';
+      position: absolute;
+      border: 3px solid white;
+      border-radius: 50%;
+      animation: pulse 1.5s infinite;
+    }
+
+    .wifi::before {
+      width: 60px;
+      height: 60px;
+      top: 0;
+      left: 0;
+    }
+
+    .wifi::after {
+      width: 30px;
+      height: 30px;
+      top: 15px;
+      left: 15px;
+      animation-delay: 0.75s;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.7); opacity: 0.5; }
+      50% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(0.7); opacity: 0.5; }
+    }
+
+    #main-content {
+      display: none;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    #main-content img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="loader" class="centered loader">
+    <div class="wifi"></div>
